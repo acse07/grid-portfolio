@@ -72,6 +72,18 @@ gulp.task("images", function () {
 });
 
 gulp.task(
+	"base-styles",
+	function () {
+		return gulp.src("src/css/*.css").pipe(gulp.dest("dist/css"));
+	}
+);
+
+gulp.task(
+	"build",
+	gulp.parallel("styles", "base-styles", "scripts", "fonts", "icons", "html", "images")
+);
+
+gulp.task(
 	"default",
 	gulp.parallel(
 		"watch",
